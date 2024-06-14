@@ -17,10 +17,10 @@ $bannedUsernames = [ // Add words to ban if it is a username/if it is in a usern
 	Cloudflare Turnstile: https://www.cloudflare.com/products/turnstile/
 */
 
-$enableCaptcha = false;
-$captchaType = 1; // 1 for hCaptcha, 2 for reCaptcha and 3 for CF-Turnstile
-$CaptchaKey = "";
-$CaptchaSecret = "";
+$enableCaptcha = true;
+$captchaType = 2; // 1 for hCaptcha, 2 for reCaptcha and 3 for CF-Turnstile
+$CaptchaKey = "6LfWCVEpAAAAAIKzB7iw0M7ePPJwuuK_9yP_BcYt";
+$CaptchaSecret = "6LfWCVEpAAAAAHHc2Jp2KfB8jqwIRDOwNuYWtkHT";
 
 /*
 	Block access from free proxies and common VPNs

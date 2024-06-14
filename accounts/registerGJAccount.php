@@ -6,6 +6,8 @@ include_once "../incl/lib/mainLib.php";
 $gs = new mainLib();
 require_once "../incl/lib/exploitPatch.php";
 require_once "../incl/lib/generatePass.php";
+require_once "../incl/lib/TimeoutCheck.php";
+
 if(!isset($preactivateAccounts)) $preactivateAccounts = true;
 if(!isset($filterUsernames)) global $filterUsernames;
 if(!empty($_POST["userName"]) AND !empty($_POST["password"]) AND !empty($_POST["email"])) {
@@ -26,7 +28,7 @@ if(!empty($_POST["userName"]) AND !empty($_POST["password"]) AND !empty($_POST["
 	}
 	if(strlen($userName) > 20 || strpos($userName, ' ') !== false) exit("-4");
 	if(strlen($userName) < 3) exit("-9");
-	if(strlen($password) < 6) exit("-8");
+	if(strlen($password) < 8) exit("-8");
 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)) exit("-6");
 	if($mailEnabled) {
 		$checkMail = $db->prepare("SELECT count(*) FROM accounts WHERE email LIKE :mail");
@@ -40,6 +42,7 @@ if(!empty($_POST["userName"]) AND !empty($_POST["password"]) AND !empty($_POST["
 	if($regusrs > 0) {
 		echo "-2";
 	} else {
+        TimeoutCheck::CheckTimeout(-701);
 		$hashpass = password_hash($password, PASSWORD_DEFAULT);
 		$gjp2 = GeneratePass::GJP2hash($password);
 		$query = $db->prepare("INSERT INTO accounts (userName, password, email, registerDate, isActive, gjp2)

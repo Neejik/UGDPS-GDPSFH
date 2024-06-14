@@ -250,7 +250,7 @@ if(!empty($clan)) {
 		</script>', 'profile'));
         } else {
             $name = base64_encode(strip_tags(ExploitPatch::rucharclean(str_replace(' ', '', $_POST["clanname"]), 20)));
-			$tag = base64_encode(strip_tags(ExploitPatch::charclean(str_replace(' ', '', strtoupper($_POST["clantag"])), 5)));
+            $tag = base64_encode(strip_tags(ExploitPatch::charclean(str_replace(' ', '', strtoupper($_POST["clantag"])), 5)));
             $desc = base64_encode(strip_tags(ExploitPatch::rucharclean($_POST["clandesc"], 255)));
             $color = ExploitPatch::charclean(mb_substr($_POST["clancolor"], 1), 6);
 			$isClosed = ExploitPatch::number($_POST["isclosed"], 1);

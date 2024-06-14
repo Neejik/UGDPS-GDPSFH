@@ -1,7 +1,7 @@
 <?php
 $installed = false; // DON'T CHANGE IT! It changes automatically
 
-$gdps = "GDPS"; // Used to title and download
+$gdps = "Unnamed GDPS"; // Used to title and download
 $lrEnabled = 1; // 1 = Level reupload enabled, 0 = disabled
 $msgEnabled = 1; // 1 = Messenger enabled, 0 = disabled
 $clansEnabled = 1; // 1 = Clans enabled, 0 = disabled
@@ -17,12 +17,12 @@ $timeType = 1; // How time will show in-game, 0 - default Cvolton time, 1 - Dash
 
 $pc = '';
 $mac = '';
-$android = '';
+$android = 'Unnamed GDPS.apk';
 $ios = '';
 
 // Launcher executable names (like "launcher.exe"), place them to dashboard/download folder
 
-$pcLauncher = "";
+$pcLauncher = "Unnamed GDPS 0.2 Installer.exe";
 $macLauncher = "";
 $androidLauncher = "";
 $iosLauncher = "";
@@ -30,19 +30,22 @@ $iosLauncher = "";
 // Footer socials settings, leave empty to disable
 
 $vk = ''; // Link to your VK page
-$discord = ''; // Link to your Discord server
+$discord = 'https://discord.gg/g2WUStyurp'; // Link to your Discord server
 $twitter = ''; // Link to your Twitter/X page
-$youtube = ''; // Link to your YouTube channel
+$youtube = 'https://youtube.com/@ImNejik'; // Link to your YouTube channel
 $twitch = ''; // Link to your Twitch channel
 
 // Third-party resourses, fill it if you use something (mods, textures, etc). Syntax of this thing is: array('AVATAR', 'USERNAME', 'SOCIAL OF THIS USER', 'What this person did (optionally)');
 
-$thirdParty[] = array('https://yt3.googleusercontent.com/EZ149IVvU5JX2Fi6yH7R95NQmKdNsea_gggEvJXA0MIZQ397E_WHLLNCgBjL45npnMZNUkpq=s88-c-k-c0x00ffffff-no-rj', 'RobTop', 'https://store.steampowered.com/app/322170/Geometry_Dash/', 'For Geometry Dash');
-$thirdParty[] = array('https://avatars.githubusercontent.com/u/5721187', 'Cvolton', 'https://github.com/Cvolton', 'For GDPS code');
-$thirdParty[] = array('https://avatars.githubusercontent.com/u/52624723', 'Foxodever', 'https://github.com/foxodever/BetterCvoltonGDPS/blob/main/tools/songs/upload.php', 'For file upload script');
+$thirdParty[] = array('https://yt3.googleusercontent.com/EZ149IVvU5JX2Fi6yH7R95NQmKdNsea_gggEvJXA0MIZQ397E_WHLLNCgBjL45npnMZNUkpq=s88-c-k-c0x00ffffff-no-rj', 'RobTop', 'https://store.steampowered.com/app/322170/Geometry_Dash/', 'Geometry Dash Creator');
+$thirdParty[] = array('https://avatars.githubusercontent.com/u/5721187', 'Cvolton', 'https://github.com/Cvolton', 'GDPS Core Creator');
+$thirdParty[] = array('https://cdn.discordapp.com/avatars/310561826976825344/db7e29c262d84819c5cc8551b9c2b430.png?size=1024', 'Nejik.✦', 'https://youtube.com/@ImNejik', 'Unnamed GDPS Owner');
+$thirdParty[] = array('https://avatars.githubusercontent.com/u/49565695?v=4', 'MegaSa1nt', 'https://github.com/MegaSa1nt', 'Awesome Dashboard Creator');
+$thirdParty[] = array('https://cdn.discordapp.com/avatars/401472259128164353/02aab902637966de79ef7bada0eb8784.png?size=1024', 'MigMatos', 'https://www.youtube.com/@MigMatos', 'Better Security Provider');
+$thirdParty[] = array('https://cdn.discordapp.com/avatars/980234899665612860/34a3eeabdef693ad4614db4ecce28ee3.png?size=1024', 'Cypher', 'https://www.youtube.com/@Cypher0365', 'APK Colaborator');
 
 // SFX/Music libraries, syntax is: array(ID (must be unique), LIBRARY NAME, LIBRARY LINK (not to .dat file), LIBRARY TYPE (0 = only SFX, 1 = only music, 2 = both));
-// Template: $customLibrary[] = array(1, '', '', 2); 
+// Template: $customLibrary[] = array(1, '', '', 2);
 
 $customLibrary[] = array(1, 'Geometry Dash', 'https://geometrydashfiles.b-cdn.net', 2); 
 $customLibrary[] = array(2, 'GDPSFH', 'https://sfx.fhgdps.com', 0); 
