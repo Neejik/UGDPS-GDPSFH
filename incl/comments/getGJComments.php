@@ -66,7 +66,7 @@ $visiblecount = $query->rowCount();
 
 foreach($result as &$comment1) {
 	if($comment1["commentID"]!=""){
-      	$uploadDate = $gs->makeTime($comment1["timestamp"]);
+      	$uploadDate = $gs->makeDate($comment1["timestamp"])."\n(".$gs->makeTime($comment1["timestamp"])." ago)";
 		$commentText = ($gameVersion < 20) ? base64_decode($comment1["comment"]) : $comment1["comment"];
 		if($enableCommentLengthLimiter) $commentText = base64_encode(substr(base64_decode($commentText), 0, $maxCommentLength));
 		if($displayLevelID) $commentstring .= "1~".$comment1["levelID"]."~";

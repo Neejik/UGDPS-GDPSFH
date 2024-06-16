@@ -28,7 +28,7 @@ if(empty($_POST["isSender"])){
 $query = $db->prepare("SELECT userName, userID, extID, clan FROM users WHERE extID = :accountID");
 $query->execute([':accountID' => $accountID]);
 $result12 = $query->fetch();
-$uploadDate = $gs->makeTime($result["timestamp"]);
+$uploadDate = $gs->makeDate($result["timestamp"])."\n(".$gs->makeTime($result["timestamp"])." ago)";
 $result12["userName"] = $gs->makeClanUsername($result12);
 $result["subject"] = base64_encode(ExploitPatch::rutoen(base64_decode($result["subject"])));
 $result["body"] = base64_encode(XORCipher::cipher(ExploitPatch::rutoen(XORCipher::cipher(base64_decode($result["body"]), 14251)), 14251));

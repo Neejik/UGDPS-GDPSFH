@@ -82,8 +82,8 @@ if(!is_numeric($levelID)){
 														(:levelID,INET6_ATON(:ip))");
 			$query6->execute([':levelID' => $levelID, ':ip' => $ip]);
 		}
-		$uploadDate = $gs->makeTime($result["uploadDate"]);
-		$updateDate = $gs->makeTime($result["updateDate"]);
+		$uploadDate = $gs->makeDate($result["uploadDate"])."\n(".$gs->makeTime($result["uploadDate"])." ago)";
+		$updateDate = $gs->makeDate($result["updateDate"])."\n(".$gs->makeTime($result["updateDate"])." ago)";
 		//password xor
 		$pass = $result["password"];
 		$desc = $result["levelDesc"];

@@ -939,10 +939,10 @@ class dashboardLib {
 	public function convertToDate($timestamp, $acc = false){
 		if($acc) {
 			if($timestamp == 0) return $this->getLocalizedString("never");
-			if(date("d.m.Y", $timestamp) == date("d.m.Y", time())) return date("G:i", $timestamp);
-			elseif(date("Y", $timestamp) == date("Y", time())) return date("d.m", $timestamp);
-			else return date("d.m.Y", $timestamp);
-		} else return date("d.m.Y G:i:s", $timestamp);
+			if(date("d.m.Y", $timestamp) == date("d.m.Y", time())) return "Today at ".date("G:i", $timestamp);
+			elseif(date("Y", $timestamp) == date("Y", time())) return date("d/m", $timestamp);
+			else return date("d/m/Y", $timestamp);
+		} else return date("d/m/Y G:i:s", $timestamp);
 	}
 	public function createProfileStats($stars = 0, $moons = 0, $diamonds = 0, $goldCoins = 0, $userCoins = 0, $demons = 0, $creatorPoints = 0, $isCreatorBanned, $returnText = true) {
 		if($stars == 0) $st = ''; else $st = '<p class="profilepic">'.$stars.' <i class="fa-solid fa-star" style="color:#ffff88"></i></p>';

@@ -255,36 +255,19 @@ class mainLib {
 	public function getGauntletCount() {
 		return count($this->getGauntletName(0, true))-1;
 	}
-	public function makeDate($inclContext) {
-	    if(file_exists($result["uploadDate"])) $inclContext = $result["uploadDate"];
-	    elseif(file_exists($result["updateDate"])) $inclContext = $result["updateDate"];
-	    elseif(file_exists($comment1["timestamp"])) $inclContext = $comment1["timestamp"];
-	    elseif(file_exists($result["timestamp"])) $inclContext = $result["timestamp"];
-	    elseif(file_exists($message1["timestamp"])) $inclContext = $message1["timestamp"];
-	    elseif(file_exists($INCrequestinfo["uploadDate"])) $inclContext = $INCrequestinfo["uploadDate"];
-	    elseif(file_exists($request["uploadDate"])) $inclContext = $request["uploadDate"];
-	    elseif(file_exists($score["uploadDate"])) $inclContext = $score["uploadDate"];
-	    switch(date("G", $inclContext)) {
-	        case date("G", $inclContext) == 12 && 0: // midnight
-	            $timeFormat = " AM";
-	            if(date('d/m/Y', $inclContext) == date('d/m/Y', time())) $dateFormat = "Today at ".date(("G.i"), $inclContext);
-	            elseif(date('d/m/Y', $inclContext) == date('d/m/Y', time() - 86400)) $dateFormat = "Yesterday at ".date(("G.i"), $inclContext);
-	            else $dateFormat = date(("d/m/Y G.i"), $inclContext);
-	            break;
-	        case date("G", $inclContext) > 11: // evening
-	            $timeFormat = " PM";
-	            if(date('d/m/Y', $inclContext) == date('d/m/Y', time())) $dateFormat = "Today at ".date(("G.i"), $inclContext);
-	            elseif(date('d/m/Y', $inclContext) == date('d/m/Y', time() - 86400)) $dateFormat = "Yesterday at ".date(("G.i"), $inclContext);
-	            else $dateFormat = date(("d/m/Y G.i"), $inclContext);
-	            break;
-	        case date("G", $inclContext) <= 11: // morning
-	            $timeFormat = " AM";
-	            if(date('d/m/Y', $inclContext) == date('d/m/Y', time())) $dateFormat = "Today at ".date(("G.i"), $inclContext);
-	            elseif(date('d/m/Y', $inclContext) == date('d/m/Y', time() - 86400)) $dateFormat = "Yesterday at ".date(("G.i"), $inclContext);
-	            else $dateFormat = date(("d/m/Y G.i"), $inclContext);
-	            break;
-	    }
-	    return $dateFormat.$timeFormat;
+	public function makeDate($date) {
+		$timestamps = array ($result["uploadDate"], $result["updateDate"], $comment1["timestamp"], $result["timestamp"], $message1["timestamp"], $INCrequestinfo["uploadDate"], $request["uploadDate"], $score["uploadDate"]);
+		foreach ($timestamps as $timestamp) {
+			if(!empty($timestamp)) {
+				$date = $timestamp;
+				break;
+			}
+		}
+		$timePeriod = (date("G", $date) > 11) ? " PM" : " AM";
+		if(date('d/m/Y', $date) == date('d/m/Y', time())) $date = "Today at " . date("Gːi", $date);
+		elseif(date('d/m/Y', $date) == date('d/m/Y', time() - 86400)) $date = "Yesterday at " . date("Gːi", $date);
+		else $date = date("d/m/Y Gːi", $date);
+		return $date.$timePeriod;
 	}
 	public function makeTime($time) {
 		include __DIR__ . "/../../config/dashboard.php";

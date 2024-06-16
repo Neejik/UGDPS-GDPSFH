@@ -22,29 +22,8 @@ $countquery->execute([':userID' => $userID]);
 $commentcount = $countquery->fetchColumn();
 foreach($result as &$comment1) {
 	if($comment1["commentID"]!=""){
-      	//$uploadDate = $gs->makeTime($comment1["timestamp"]);
+      	$uploadDate = $gs->makeDate($comment1["timestamp"])."\n(".$gs->makeTime($comment1["timestamp"])." ago)";
 		$likes = $comment1["likes"]; // - $comment1["dislikes"];
-	    switch(date("G", $comment1["timestamp"])) {
-	        case date("G", $comment1["timestamp"]) == 12 && 0: // midnight
-	            $timeFormat = " AM";
-	            if(date('d/m/Y', $comment1["timestamp"]) == date('d/m/Y', time())) $dateFormat = "Today at ".date(("G:i"), $comment1["timestamp"]);
-	            elseif(date('d/m/Y', $comment1["timestamp"]) == date('d/m/Y', time() - 86400)) $dateFormat = "Yesterday at ".date(("G:i"), $comment1["timestamp"]);
-	            else $dateFormat = date(("d/m/Y G:i"), $comment1["timestamp"]);
-	            break;
-	        case date("G", $comment1["timestamp"]) > 11: // evening
-	            $timeFormat = " PM";
-	            if(date('d/m/Y', $comment1["timestamp"]) == date('d/m/Y', time())) $dateFormat = "Today at ".date(("G:i"), $comment1["timestamp"]);
-	            elseif(date('d/m/Y', $comment1["timestamp"]) == date('d/m/Y', time() - 86400)) $dateFormat = "Yesterday at ".date(("G:i"), $comment1["timestamp"]);
-	            else $dateFormat = date(("d/m/Y G:i"), $comment1["timestamp"]);
-	            break;
-	        case date("G", $comment1["timestamp"]) <= 11: // morning
-	            $timeFormat = " AM";
-	            if(date('d/m/Y', $comment1["timestamp"]) == date('d/m/Y', time())) $dateFormat = "Today at ".date(("G:i"), $comment1["timestamp"]);
-	            elseif(date('d/m/Y', $comment1["timestamp"]) == date('d/m/Y', time() - 86400)) $dateFormat = "Yesterday at ".date(("G:i"), $comment1["timestamp"]);
-	            else $dateFormat = date(("d/m/Y G:i"), $comment1["timestamp"]);
-	            break;
-	    }
-	    $uploadDate = $dateFormat.$timeFormat."\n(".$gs->makeTime($comment1["timestamp"])." ago)";
 		$reply = $db->prepare("SELECT count(*) FROM replies WHERE commentID = :id");
 		$reply->execute([':id' => $comment1["commentID"]]);
 		$reply = $reply->fetchColumn();
