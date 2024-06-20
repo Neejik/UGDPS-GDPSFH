@@ -256,13 +256,6 @@ class mainLib {
 		return count($this->getGauntletName(0, true))-1;
 	}
 	public function makeDate($date) {
-		$timestamps = array ($result["uploadDate"], $result["updateDate"], $comment1["timestamp"], $result["timestamp"], $message1["timestamp"], $INCrequestinfo["uploadDate"], $request["uploadDate"], $score["uploadDate"]);
-		foreach ($timestamps as $timestamp) {
-			if(!empty($timestamp)) {
-				$date = $timestamp;
-				break;
-			}
-		}
 		$timePeriod = (date("G", $date) > 11) ? " PM" : " AM";
 		if(date('d/m/Y', $date) == date('d/m/Y', time())) $date = "Today at " . date("Gːi", $date);
 		elseif(date('d/m/Y', $date) == date('d/m/Y', time() - 86400)) $date = "Yesterday at " . date("Gːi", $date);
@@ -920,7 +913,7 @@ class mainLib {
 	}
 	public function makeClanUsername($user) {
 		include __DIR__ . "/../../config/dashboard.php";
-		if($clansEnabled && $user['clan'] > 0) {
+		if($clansEnabled && $user['clan'] > 0 && !isset($_REQUEST['noClan'])) {
 			$clan = $this->getClanInfo($user['clan'], 'tag');
 			if(!empty($clan)) return '['.$clan.'] '.$user['userName'];
 		}
