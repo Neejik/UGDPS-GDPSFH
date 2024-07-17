@@ -76,7 +76,7 @@ $banWebhook = "";
 $dailyWebhook = "";
 $dmNotifications = false;
 
-$webhookLanguage = 'EN';
+$webhookLanguage = 'ES';
 $likeEmoji = ":+1:";
 $dislikeEmoji = ":-1:";
 $downloadEmoji = ":arrow_heading_down:";
