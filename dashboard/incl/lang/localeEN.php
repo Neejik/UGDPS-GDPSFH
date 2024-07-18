@@ -386,7 +386,7 @@ $string["createClanDesc"] = "Here you can create a team!";
 $string["create"] = "Create";
 $string["mainSettings"] = "Main settings";
 $string["takenClanName"] = "This team name was already taken!";
-$string["takenClanTag"] = "This clan tag was already taken!";
+$string["takenClanTag"] = "This team tag was already taken!";
 
 $string["suggestedName"] = '<button type="button" onclick="a(\'profile/%1$s\', true, true)" class="accbtn" name="accountID">%1$s</button><text class="dltext"> suggested <b>%4$s%3$s</b> for</text><text class="levelname">%2$s</text>'; // %1$s - Mod username, %2$s - level name, %3$s - x stars, %4$s - Featured/Epic (%4$s%3$s - Featured, x stars)
 $string["reportedName"] = '%1$s<text class="dltext"> was reported</text><text class="levelname">%2$s</text>';

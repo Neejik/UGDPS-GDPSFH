@@ -86,9 +86,9 @@ class dashboardLib {
 		echo '<div class="footer">'.$this->getLocalizedString("footer").'<div>';
         if($youtube != '') echo '<a href="'.$youtube.'" target="_blank"><img class="socials" style="width: 35px" src="'.$sub.'incl/socials/youtube.png"></a>';
         if($discord != '') echo '<a href="'.$discord.'"target="_blank"><img class="socials" style="width: 35px" src="'.$sub.'incl/socials/discord.png"></a>';
-      	if($twitter != '') echo '<a href="'.$twitter.'"target="_blank"><img class="socials" style="width: 20px" src="'.$sub.'incl/socials/twitter.png"></a>';
-      	if($vk != '') echo '<a href="'.$vk.'"target="_blank"><img class="socials" style="width: 20px" src="'.$sub.'incl/socials/vk.png"></a>';
-      	if($twitch != '') echo '<a href="'.$twitch.'"target="_blank"><img class="socials" style="width: 20px" src="'.$sub.'incl/socials/twitch.png"></a>';
+      	if($twitter != '') echo '<a href="'.$twitter.'"target="_blank"><img class="socials" style="width: 35px" src="'.$sub.'incl/socials/twitter.png"></a>';
+      	if($vk != '') echo '<a href="'.$vk.'"target="_blank"><img class="socials" style="width: 35px" src="'.$sub.'incl/socials/vk.png"></a>';
+      	if($twitch != '') echo '<a href="'.$twitch.'"target="_blank"><img class="socials" style="width: 35px" src="'.$sub.'incl/socials/twitch.png"></a>';
         echo '</div></div></div>';
 	}
 	public function printLoginBox($content){
@@ -310,6 +310,7 @@ class dashboardLib {
 						</div>';
 						$glob = function_exists('glob') ? (!empty(glob("../download/".$gdps.".*")) OR !empty(glob("download/".$gdps.".*"))) : true;
 						if($glob OR !empty($pc) OR !empty($mac) OR !empty($android) OR !empty($ios)) {
+							echo '
 					<li class="nav-item dropdown"  id="thirdp">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<i class="fa-solid fa-download" aria-hidden="true"></i> '.$this->getLocalizedString("download").'
@@ -358,7 +359,8 @@ class dashboardLib {
 			$userName = $gs->getAccountName($_SESSION["accountID"]);
 			echo'<li class="nav-item dropdown '.$profileActive.'">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fa-solid fa-user-circle" aria-hidden="true"></i> '.$userName.'						</a>
+							<i class="fa-solid fa-user-circle" aria-hidden="true"></i> '.$userName.'
+						</a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 							<a type="button" href="profile/'.$userName.'" onclick="a(\'profile/'.$userName.'\')" class="dropdown-item"><div class="icon"><i class="fa-regular fa-id-badge"></i></div>'.$this->getLocalizedString("profile").'</a>';
 							$claaan = $gs->isPlayerInClan($_SESSION["accountID"]);
