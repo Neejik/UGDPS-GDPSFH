@@ -715,7 +715,7 @@ class dashboardLib {
 			</script>
 		</div>
 <script>
-	if(document.querySelector("[alt=\'www.000webhost.com\']") != null) document.querySelector("[alt=\'www.000webhost.com\']").parentElement.parentElement.remove();
+	if(document.querySelector("[alt=\'www.000webhost.com\']") != null) document.querySelector("[alt=\'www.000webhost.com\']").parentElement.parentElement.style = "z-index: 0;position: fixed;bottom: 0px;"
 	cptch = document.querySelector("#verycoolcaptcha");
 	$(document).click(function(event) {
 		if(event.target && !event.target.classList.contains("dontblock") && (event.target.classList.contains("dropdown-item") || event.target.classList.contains("icon") || event.target.classList.contains("nav-link") || event.target.classList.contains("fa-solid") || event.target.classList.contains("fa-regular"))) event.preventDefault();

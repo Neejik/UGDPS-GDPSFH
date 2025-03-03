@@ -1,5 +1,5 @@
 <?php
-$installed = false; // DON'T CHANGE IT! It changes automatically
+$installed = true; // Like i said, it changed!
 
 $gdps = "Unnamed GDPS"; // Used to title and download
 $lrEnabled = 1; // 1 = Level reupload enabled, 0 = disabled
@@ -10,7 +10,7 @@ $sfxEnabled = 12; // 0 = SFX reupload disabled, add 1 to enable SFX file reuploa
 $convertEnabled = 1; // 1 = Convert SFX to OGG enabled, 0 = disabled
 $songSize = 8; // Max song size in megabytes
 $sfxSize = 4.5; // Max SFX size in megabytes
-$timeType = 1; // How time will show in-game, 0 - default Cvolton time, 1 - Dashboard-like time, 2 - RobTop-like time
+$timeType = 2; // How time will show in-game, 0 - default Cvolton time, 1 - Dashboard-like time, 2 - RobTop-like time
 // If you changed dashboard's place, change $dbPath in dashboard/incl/dashboardLib.php
 
 // External download links, disables when you have gdpsName.gdpsFileType in dashboard/download directory

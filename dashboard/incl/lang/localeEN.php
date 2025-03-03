@@ -353,6 +353,7 @@ $string["clanOwner"] = "Team owner";
 $string["noClanDesc"] = "<i>No description</i>";
 $string["noClan"] = "This team doesn't exist!";
 $string["clanName"] = "Team name";
+$string["clanTag"] = "Team tag (3-5 characters)";
 $string["clanDesc"] = "Team description";
 $string["clanColor"] = "Team color";
 $string["dangerZone"] = "Danger zone";

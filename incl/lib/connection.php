@@ -1,4 +1,6 @@
 <?php
+//ini_set('display_errors', 'On');
+error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED);
 if(!isset($db)) global $db;
 if(empty($db)) {
 	error_reporting(0);

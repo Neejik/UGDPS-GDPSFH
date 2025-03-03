@@ -18,7 +18,7 @@ if(empty($_POST["levelID"])){
 $extras = !empty($_POST["extras"]) && $_POST["extras"];
 $inc = !empty($_POST["inc"]) && $_POST["inc"];
 $ip = $gs->getIP();
-$levelID = ExploitPatch::number($_POST["levelID"]);
+$levelID = ExploitPatch::numbercolon($_POST["levelID"]);
 $binaryVersion = !empty($_POST["binaryVersion"]) ? ExploitPatch::number($_POST["binaryVersion"]) : 0;
 $feaID = 0;
 if(!is_numeric($levelID)){
@@ -82,8 +82,8 @@ if(!is_numeric($levelID)){
 														(:levelID,INET6_ATON(:ip))");
 			$query6->execute([':levelID' => $levelID, ':ip' => $ip]);
 		}
-		$uploadDate = $gs->makeDate($result["uploadDate"])."\n(".$gs->makeTime($result["uploadDate"])." ago)";
-		$updateDate = $gs->makeDate($result["updateDate"])."\n(".$gs->makeTime($result["updateDate"])." ago)";
+		$uploadDate = $gs->makeDate($result["uploadDate"])." (".$gs->makeTime($result["uploadDate"])." ago)";
+		$updateDate = $gs->makeDate($result["updateDate"])." (".$gs->makeTime($result["updateDate"])." ago)";
 		//password xor
 		$pass = $result["password"];
 		$desc = $result["levelDesc"];

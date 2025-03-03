@@ -257,9 +257,9 @@ class mainLib {
 	}
 	public function makeDate($date) {
 		$timePeriod = (date("G", $date) > 11) ? " PM" : " AM";
-		if(date('d/m/Y', $date) == date('d/m/Y', time())) $date = "Today at " . date("Gːi", $date);
-		elseif(date('d/m/Y', $date) == date('d/m/Y', time() - 86400)) $date = "Yesterday at " . date("Gːi", $date);
-		else $date = date("d/m/Y Gːi", $date);
+		if(date('d/m/Y', $date) == date('d/m/Y', time())) $date = "Today at " . date("G;i", $date);
+		elseif(date('d/m/Y', $date) == date('d/m/Y', time() - 86400)) $date = "Yesterday at " . date("G;i", $date);
+		else $date = date("d/m/Y G;i", $date);
 		return $date.$timePeriod;
 	}
 	public function makeTime($time) {
