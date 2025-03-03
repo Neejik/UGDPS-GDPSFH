@@ -2018,10 +2018,20 @@ class mainLib {
 			$m->Password = $mailpass;
 			$m->Port = $mailport;
 			if($mailtype) $m->SMTPSecure = $mailtype;
+			else {
+				$m->SMTPSecure = 'tls';
+				$m->SMTPOptions = array(
+					'ssl' => array(
+						'verify_peer' => false,
+						'verify_peer_name' => false,
+						'allow_self_signed' => true
+					)
+				);
+			}
 			$m->setFrom($yourmail, $gdps);
 			$m->addAddress($mail, $user);
 			$m->isHTML(true);
-			if(!$isForgotPass) {
+			/*if(!$isForgotPass) {
 				$string = $this->randomString(4);
 				$query = $db->prepare("UPDATE accounts SET mail = :mail WHERE userName = :user");
 				$query->execute([':mail' => $string, ':user' => $user]);
@@ -2049,6 +2059,22 @@ class mainLib {
 				<p style="color:rgba(0,0,0,.45)">Need help? <a href=https://discord.gg/g2WUStyurp>Join our Discord server</a> to find support!<br>
 				Mark email as "Not spam" if links don\'t work</p>
 				<p style="margin:0px; font-size:0px; color:rgba(0,0,0,0)">Dashboard outgoing message</p>';
+			}*/
+			if(!$isForgotPass) {
+				$string = $this->randomString(4);
+				$query = $db->prepare("UPDATE accounts SET mail = :mail WHERE userName = :user");
+				$query->execute([':mail' => $string, ':user' => $user]);
+				$m->Subject = 'Confirm link';
+				$m->Body = '<h1 align=center>Hello, <b>'.$user.'</b>!</h1><br>
+				<h2 align=center>It seems, that you wanna register new account in <b>'.$gdps.'</b></h2><br>
+				<h2 align=center>Here is your link!</h2><br>
+				<h1 align=center>'.dirname('https://'.$_SERVER["HTTP_HOST"].$_SERVER['REQUEST_URI']).'/activate.php?mail='.$string.'</h1>';
+			} else {
+				$m->Subject = 'Forgot password?';
+				$m->Body = '<h1 align=center>Hello, <b>'.$user.'</b>!</h1><br>
+				<h2 align=center>It seems, that you forgot your password in <b>'.$gdps.'</b>...</h2><br>
+				<h2 align=center>Here is your link!</h2><br>
+				<h1 align=center>https://'.$_SERVER["HTTP_HOST"].$_SERVER['REQUEST_URI'].'?code='.$isForgotPass.'</h1>';
 			}
 			return $m->send();
 		}

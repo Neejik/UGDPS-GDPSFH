@@ -1,12 +1,13 @@
 <?php
 global $dbPath;
 include __DIR__."/../../".$dbPath."config/dashboard.php";
+include __DIR__."/../../../incl/lib/connection.php";
 $string["homeNavbar"] = "Home";
 $string["welcome"] = "Welcome to ".$gdps.' Dashboard!';
 $string["didntInstall"] = "<div style='color:#47a0ff'><b>Warning!</b> You haven't fully installed dashboard! Click on the text to do this.</div>";
 $string["levelsWeek"] = "Levels uploaded in a week";
 $string["levels3Months"] = "Levels uploaded in 3 months";
-$string["footer"] = "✨〃Unnamed GDPS, 2021 - ".date('Y', time())."</br>⚙ GDPSCore v2.0.0-beta";
+$string["footer"] = ($isMaintenance == true) ? "✨〃Unnamed GDPS, 2021 - ".date('Y', time())."</br>⚠️ Server in Maintenance" : "✨〃Unnamed GDPS, 2021 - ".date('Y', time())."</br>⚙ GDPSCore v2.0.0-beta";
 $string["tipsAfterInstalling"] = "Welcome to Dashboard! We give you some hints after installation:<br>
 1. It seems that new permissions have appeared in SQL in the 'roles' table! You should check it out...<br>
 2. If you put 'icon.png' to the 'dashboard' folder, then the icon of your GDPS will appear on the top left!<br>
@@ -44,7 +45,16 @@ $msg[28] = "It's a page!";
 $msg[29] = "Successful connection";
 $msg[30] = "0.3.0 update Coming Soon!";
 
-$string["wwygdt"] = $msg[rand(0, 30)];
+$time = $maintenanceDate - time();
+$time = ($time < 1) ? 1 : $time;
+$tokens = array (31536000 => 'year', 2592000 => 'month', 604800 => 'week', 86400 => 'day', 3600 => 'hour', 60 => 'minute', 1 => 'second');
+foreach($tokens as $unit => $text) {
+	if($time < $unit) continue;
+	$numberOfUnits = floor($time / $unit);
+	$mainDate2 = $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '');
+	break;
+};
+$string["wwygdt"] = ($maintenanceDate - time() <= 86400 && $maintenanceDate - time() > 0) ? "<a style='color: #ffcc41; background: rgb(255 199 80 / 20%); border: 2px solid #e7bf61; border-radius: 15px; padding: 10px 20px; font-size: 25px;'>⚠️ Maintenance programmed in ".$mainDate2."</a>" : $msg[rand(0, 30)];
 $string["game"] = "Game";
 $string["guest"] = "guest";
 $string["account"] = "Account";
